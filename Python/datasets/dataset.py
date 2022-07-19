@@ -21,7 +21,7 @@ class Dataset(object):
 		self._unique_values = {}
 		for k, v in contents.items():
 			setattr(self, '_%s' % k, v)
-			if v.dtype.type == np.int32:
+			if v.dtype == int:
 				print("HELL")
 				self._unique_values[k] = np.unique(v)
 		# DBUG

@@ -25,7 +25,7 @@ class Dataset(object):
 				self._unique_values[k] = np.unique(v)
 		# DBUG
 		print("%%%%%%%%%%%%%%%%%%%%%%%%")
-		print(self._unique_values.keys())
+		print(self._unique_values['R'])
 		print("%%%%%%%%%%%%%%%%%%%%%%%%")
 
 		# Compute indices for the splits

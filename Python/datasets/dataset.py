@@ -21,10 +21,10 @@ class Dataset(object):
 		self._unique_values = {}
 		for k, v in contents.items():
 			setattr(self, '_%s' % k, v)
-			# DBUG
-			print(k, v, v.dtype)
 			if v.dtype == int:
 				self._unique_values[k] = np.unique(v)
+		# DBUG
+		print(self._unique_values.keys())
 
 		# Compute indices for the splits
 		self._inds = {

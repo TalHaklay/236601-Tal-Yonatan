@@ -24,7 +24,9 @@ class Dataset(object):
 			if v.dtype == int:
 				self._unique_values[k] = np.unique(v)
 		# DBUG
+		print("%%%%%%%%%%%%%%%%%%%%%%%%")
 		print(self._unique_values.keys())
+		print("%%%%%%%%%%%%%%%%%%%%%%%%")
 
 		# Compute indices for the splits
 		self._inds = {

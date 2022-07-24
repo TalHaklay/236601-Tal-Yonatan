@@ -6,6 +6,9 @@ from datasets.dataset import ClassificationDataset
 from utils.dataset import standardized, with_intercept, with_feature
 
 BASE_URL = os.path.join('datasets', 'adult', 'adult_norm.csv')
+STRAT_URL = os.path.join('datasets', 'adult', 'adult_S.csv')
+
+STRAT_SPLIT = False
 
 def load(r_train=0.4, r_candidate=0.2, seed=None, include_intercept=True, use_pct=1.0, include_R=False, include_S=False, standardize=False, R0=None, R1=None, shuffle=True):
 	meta_information = {
@@ -18,8 +21,13 @@ def load(r_train=0.4, r_candidate=0.2, seed=None, include_intercept=True, use_pc
 		meta_information.update({'R0':R0, 'R1':R1})
 
 	random = np.random.RandomState(seed)
-	
-	with open(BASE_URL, 'r') as f:
+
+	url = BASE_URL
+	if STRAT_SPLIT:
+		shuffle = False
+		url = STRAT_URL
+
+	with open(url, 'r') as f:
 		raw = list(f)
 	labels, *raw = [ d.strip().split(',') for d in raw ]
 	data = { k:np.array(v).astype(float) for k,v in zip(labels, np.array(raw).T)}

@@ -323,11 +323,13 @@ if __name__ == '__main__':
 		parser.add_argument('--dshift_var', type=str,       default='race', help='Choice of variable to evaluate demographic shift for.')
 		parser.add_argument('--dshift_alpha', type=float,   default=0.1,    help='Width of intervals around true marginals representing valid demographic shifts.')
 		parser.add_argument('--cs_scale', type=float, default=1.0,  help='Scaling factor for predicted confidence intervals during candidate selection.')
+		parser.add_argument('--splat_split', type=bool, default=False, help='Toggles splitting while preserving minority distribution.')
+		parser.add_argument('--splat_sex', type=bool, default=True, help='for splat_split - determins whether to split by sex (True) or race (False).')
 		args = parser.parse_args()
 		args_dict = dict(args.__dict__)
 
 		# Generate thje constraints and deltas		
-		population  = adult.load(R0='Black', R1='White')
+		population  = adult.load(R0='Black', R1='White', strat=args_dict["splat_split"], strat_S=args_dict["splat_sex"])
 		if args.dshift_var.lower()[0] == 's':
 			constraints = make_constraints(args.definition, 'R', np.unique(population._R), args.e)
 		if args.dshift_var.lower()[0] == 'r':

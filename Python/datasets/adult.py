@@ -8,13 +8,10 @@ from utils.dataset import standardized, with_intercept, with_feature
 BASE_URL = os.path.join('datasets', 'adult', 'adult_norm.csv')
 
 # Choose 1 or the other for strat split
-STRAT_URL = os.path.join('datasets', 'adult', 'adult_S.csv')
-# STRAT_URL = os.path.join('datasets', 'adult', 'adult_R.csv')
+STRAT_S_URL = os.path.join('datasets', 'adult', 'adult_S.csv')
+STRAT_R_URL = os.path.join('datasets', 'adult', 'adult_R.csv')
 
-# Make true for strat split
-STRAT_SPLIT = False
-
-def load(r_train=0.4, r_candidate=0.2, seed=None, include_intercept=True, use_pct=1.0, include_R=False, include_S=False, standardize=False, R0=None, R1=None, shuffle=True):
+def load(r_train=0.4, r_candidate=0.2, seed=None, include_intercept=True, use_pct=1.0, include_R=False, include_S=False, standardize=False, R0=None, R1=None, shuffle=True, strat_split=False, strat_S=False):
 	meta_information = {
 		'standardized' 		: standardize,
 		'include_R'    		: include_R,
@@ -27,9 +24,12 @@ def load(r_train=0.4, r_candidate=0.2, seed=None, include_intercept=True, use_pc
 	random = np.random.RandomState(seed)
 
 	url = BASE_URL
-	if STRAT_SPLIT:
+	if strat_split:
 		shuffle = False
-		url = STRAT_URL
+		if strat_S:
+			url = STRAT_S_URL
+		else:
+			url = STRAT_R_URL
 
 	with open(url, 'r') as f:
 		raw = list(f)

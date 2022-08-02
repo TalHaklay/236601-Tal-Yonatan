@@ -25,6 +25,3 @@ Once the experiments complete, the figures found in the paper can be generated u
     
 Once completed, the new figures will be saved to `Python/figures/*` by default.
 
-# License
-
-SeldonianML is released under the MIT license.

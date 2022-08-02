@@ -16,6 +16,8 @@ Our experiments can be executed by running the provided batch file from the Pyth
 
      ./experiments/scripts/iclr_ds_experiments.bat
      
+Note: iclr_ds_experiments.bat contains 7 diffrent experiments.The running duration of each experiment is about 3 days, so it is recommended to run them simultaneously if possible.
+     
 Once the experiments complete, the figures found in the paper can be generated using the following two commands, 
 
      python -m experiments.scripts.iclr_figures_adult

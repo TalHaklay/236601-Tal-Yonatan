@@ -8,8 +8,10 @@ from utils.dataset import standardized, with_intercept, with_feature
 BASE_URL = os.path.join('datasets', 'adult', 'adult_norm.csv')
 
 # Choose 1 or the other for strat split
+
 STRAT_S_URL = os.path.join('datasets', 'adult', 'adult_S.csv')
 STRAT_R_URL = os.path.join('datasets', 'adult', 'adult_R.csv')
+
 
 def load(r_train=0.4, r_candidate=0.2, seed=None, include_intercept=True, use_pct=1.0, include_R=False, include_S=False, standardize=False, R0=None, R1=None, shuffle=True, strat_split=False, strat_S=False):
 	meta_information = {

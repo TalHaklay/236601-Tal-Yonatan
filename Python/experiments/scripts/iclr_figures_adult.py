@@ -6,6 +6,8 @@ from matplotlib import pyplot as plt
 import matplotlib.ticker as mtick
 from matplotlib.colors import hex2color
 
+from sys import path
+path.insert(1, '/home/tal.ha/proj/236601/236601-Tal-Yonatan/Python')
 import utils
 from utils import keyboard
 from utils.io import SMLAResultsReader
@@ -15,8 +17,8 @@ from utils.argsweep    import ArgumentSweeper
 
 import pandas as pd
 
-plt.rcParams['text.usetex'] = True
-plt.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}']
+#plt.rcParams['text.usetex'] = True
+#plt.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}']
 
 if __name__ == '__main__':
 	with ArgumentSweeper() as parser:
@@ -41,17 +43,17 @@ if __name__ == '__main__':
 	# Paths to results files. Figures will be skipped if data cannot be found.
 	# Note that the legend is based off of the EO figure, so it will not be 
 	# generated if EO data is unavailable.
-	di_path     = f'results/iclr_adult_{mode}_ds_rl_di_0/iclr_adult_{mode}_ds_rl_di.h5'
-	dp_path     = f'results/iclr_adult_{mode}_ds_rl_dp_0/iclr_adult_{mode}_ds_rl_dp.h5'
-	eodds_path  = f'results/iclr_adult_{mode}_ds_rl_eodds_0/iclr_adult_{mode}_ds_rl_eodds.h5'
-	pe_path     = f'results/iclr_adult_{mode}_ds_rl_pe_0/iclr_adult_{mode}_ds_rl_pe.h5'
-	eo_path     = f'results/iclr_adult_{mode}_ds_rl_eopp_0/iclr_adult_{mode}_ds_rl_eopp.h5'
+	di_path     = f'results/iclr_adult_{mode}_ds_rl_di_10/iclr_adult_{mode}_ds_rl_di.h5'
+	dp_path     = f'results/iclr_adult_{mode}_ds_rl_dp_1/iclr_adult_{mode}_ds_rl_dp.h5'
+	eodds_path  = f'results/iclr_adult_{mode}_ds_rl_eodds_1/iclr_adult_{mode}_ds_rl_eodds.h5'
+	pe_path     = f'results/iclr_adult_{mode}_ds_rl_pe_1/iclr_adult_{mode}_ds_rl_pe.h5'
+	eo_path     = f'results/iclr_adult_{mode}_ds_rl_eopp_1/iclr_adult_{mode}_ds_rl_eopp.h5'
 	all_paths = {
-		'di':di_path,
-		'dp':dp_path,
-		'eodds':eodds_path,
-		'pe':pe_path,
-		'eo':eo_path
+		'di':di_path
+		#'dp':dp_path,
+		#'eodds':eodds_path,
+		#'pe':pe_path,
+		#'eo':eo_path
 	}
 
 	def get(path):
@@ -351,7 +353,7 @@ if __name__ == '__main__':
 			ax_ar.plot(nvals, (1-ar), c=c, ls=get_ls(mn), lw=get_lw(mn))[0]
 			ax_ar.fill_between(nvals, ((1-ar)+se), ((1-ar)-se), alpha=0.25, linewidth=0, color=c)
 		ax_ar.set_xlabel('Training Samples', labelpad=3.5)
-		ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
+		#ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
 		# ax_ar.set_xscale("log")
 		ax_ar.set_xlim(right=max(nvals))
 		ax_ar.set_ylim((0,1))
@@ -479,7 +481,7 @@ if __name__ == '__main__':
 			ax_ar.plot(nvals, (1-ar), c=c, ls=get_ls(mn), lw=get_lw(mn))[0]
 			ax_ar.fill_between(nvals, ((1-ar)+se), ((1-ar)-se), alpha=0.25, linewidth=0, color=c)
 		ax_ar.set_xlabel('Training Samples', labelpad=3.5)
-		ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
+		#ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
 		# ax_ar.set_xscale("log")
 		ax_ar.set_xlim(right=max(nvals))
 		ax_ar.set_ylim((0,1))
@@ -612,7 +614,7 @@ if __name__ == '__main__':
 			ax_ar.plot(nvals, (1-ar), c=c, ls=get_ls(mn), lw=get_lw(mn))[0]
 			ax_ar.fill_between(nvals, ((1-ar)+se), ((1-ar)-se), alpha=0.25, linewidth=0, color=c)
 		ax_ar.set_xlabel('Training Samples', labelpad=3.5)
-		ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
+		#ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
 		# ax_ar.set_xscale("log")
 		ax_ar.set_xlim(right=max(nvals))
 		ax_ar.set_ylim((0,1))
@@ -714,7 +716,7 @@ if __name__ == '__main__':
 			ax_ar.plot(nvals, (1-ar), c=c, ls=get_ls(mn), lw=get_lw(mn))[0]
 			ax_ar.fill_between(nvals, ((1-ar)+se), ((1-ar)-se), alpha=0.25, linewidth=0, color=c)
 		ax_ar.set_xlabel('Training Samples', labelpad=3.5)
-		ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
+		#ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
 		# ax_ar.set_xscale("log")
 		ax_ar.set_xlim(right=max(nvals))
 		ax_ar.set_ylim((0,1))
@@ -817,7 +819,7 @@ if __name__ == '__main__':
 			ax_ar.plot(nvals, (1-ar), c=c, ls=get_ls(mn), lw=get_lw(mn))[0]
 			ax_ar.fill_between(nvals, ((1-ar)+se), ((1-ar)-se), alpha=0.25, linewidth=0, color=c)
 		ax_ar.set_xlabel('Training Samples', labelpad=3.5)
-		ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
+		#ax_ar.set_ylabel('$\Pr(\\texttt{NO\_SOLUTION\_FOUND})$', labelpad=7)
 		# ax_ar.set_xscale("log")
 		ax_ar.set_xlim(right=max(nvals))
 		ax_ar.set_ylim((0,1))

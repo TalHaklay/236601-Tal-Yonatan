@@ -1,5 +1,7 @@
 import numpy  as np
 import pandas as pd
+from sys import path
+path.insert(1, '/home/tal.ha/proj/236601/236601-Tal-Yonatan/Python')
 import utils
 
 class SMLAResultsReader(object):

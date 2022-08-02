@@ -107,7 +107,6 @@ ENV/
 *.log
 
 # subdirectories
-Python/results*
 Python/figures*
 SeldonianML-Notes/
 SeldonianML-Papers/

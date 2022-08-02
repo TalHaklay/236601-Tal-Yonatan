@@ -329,7 +329,7 @@ if __name__ == '__main__':
 		args_dict = dict(args.__dict__)
 
 		# Generate thje constraints and deltas		
-		population  = adult.load(R0='Black', R1='White', strat=args_dict["splat_split"], strat_S=args_dict["splat_sex"])
+		population  = adult.load(R0='Black', R1='White', strat_split=args_dict["splat_split"], strat_S=args_dict["splat_sex"])
 		if args.dshift_var.lower()[0] == 's':
 			constraints = make_constraints(args.definition, 'R', np.unique(population._R), args.e)
 		if args.dshift_var.lower()[0] == 'r':
